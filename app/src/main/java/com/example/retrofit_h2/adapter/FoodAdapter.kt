@@ -28,11 +28,10 @@ class FoodAdapter : ListAdapter<Food, FoodAdapter.FoodListViewHolder>(DiffCallBa
         RecyclerView.ViewHolder(binding.root) {
         fun bind(food: Food) {
             with(binding) {
-//                Glide.with(imageView)
-//                    .load(data.avatar)
-//                    .circleCrop()
-//                    .into(imageView)
-                binding.foodView.setImageURI(Uri.parse(food.image))
+                Glide.with(foodView)
+                    .load(food.image)
+                    .circleCrop()
+                    .into(foodView)
                 binding.foodName.text = food.title
 
             }

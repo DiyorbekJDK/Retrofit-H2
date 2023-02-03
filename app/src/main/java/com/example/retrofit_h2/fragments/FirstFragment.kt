@@ -57,7 +57,7 @@ class FirstFragment : Fragment(R.layout.fragment_first) {
                     response: Response<FoodResponse>
                 ) {
                     if (response.isSuccessful){
-                        Log.d("@@@", "onResponse: ${response.body()?.foodList}")
+
                         adapter2.submitList(response.body()?.foodList)
                     }
                 }
@@ -76,6 +76,8 @@ class FirstFragment : Fragment(R.layout.fragment_first) {
             override fun onResponse(call: Call<FoodResponse>, response: Response<FoodResponse>) {
                 if (response.isSuccessful){
                     adapter2.submitList(response.body()?.foodList)
+                    Log.d("@@@", "onResponse: ${response.body()?.foodList}")
+                    binding.progressBar.isVisible =  false
                 }
                 else{
                     Toast.makeText(requireContext(), "THIISI ERRRPR", Toast.LENGTH_SHORT).show()
